@@ -1,8 +1,4 @@
-import sqlite3
-
-def conectar():
-    return sqlite3.connect('bolao.db')
-  from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -74,33 +70,3 @@ def ranking():
     """).fetchall()
     conn.close()
     return render_template('ranking.html', ranking=ranking)
-
-if __name__ == "__main__":
-    app.run(debug=True)
-  import sqlite3
-
-conn = sqlite3.connect('bolao.db')
-
-conn.execute("""
-CREATE TABLE jogos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    time1 TEXT,
-    time2 TEXT,
-    real_g1 INTEGER,
-    real_g2 INTEGER
-)
-""")
-
-conn.execute("""
-CREATE TABLE apostas (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    jogo_id INTEGER,
-    nome TEXT,
-    g1 INTEGER,
-    g2 INTEGER,
-    pontos INTEGER DEFAULT 0
-)
-""")
-
-conn.commit()
-conn.close()
