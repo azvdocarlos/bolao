@@ -1,0 +1,16 @@
+<h2>Jogos</h2>
+
+{% for j in jogos %}
+<p>
+{{j[1]}} x {{j[2]}} 
+<a href="/apostar/{{j[0]}}">Apostar</a>
+</p>
+
+<form action="/resultado/{{j[0]}}" method="post">
+<input name="g1" placeholder="gols 1">
+<input name="g2" placeholder="gols 2">
+<button>Resultado</button>
+</form>
+{% endfor %}
+
+<a href="/ranking">Ver Ranking</a>
