@@ -36,10 +36,7 @@ def conectar():
 
 @app.route('/')
 def index():
-    conn = conectar()
-    jogos = conn.execute("SELECT * FROM jogos").fetchall()
-    conn.close()
-    return render_template('index.html', jogos=jogos)
+    return "Bolão rodando 🚀"
 
 @app.route('/apostar/<int:jogo_id>', methods=['GET','POST'])
 def apostar(jogo_id):
